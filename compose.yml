@@ -26,18 +26,18 @@ services:
 
     # this is for docker compose watch mode
     # anything mentioned under develop will be watched for changes by docker compose watch and it will perform the action mentioned
-    develop:
-      # we specify the files to watch for changes
-      watch:
-        # it'll watch for changes in package.json and package-lock.json and rebuild the container if there are any changes
-        - path: ./frontend/package.json
-          action: rebuild
-        - path: ./frontend/package-lock.json
-          action: rebuild
-        # it'll watch for changes in the frontend directory and sync the changes with the container real time
-        - path: ./frontend
-          target: /app
-          action: sync
+    # develop:
+    #   # we specify the files to watch for changes
+    #   watch:
+    #     # it'll watch for changes in package.json and package-lock.json and rebuild the container if there are any changes
+    #     - path: ./frontend/package.json
+    #       action: rebuild
+    #     - path: ./frontend/package-lock.json
+    #       action: rebuild
+    #     # it'll watch for changes in the frontend directory and sync the changes with the container real time
+    #     - path: ./frontend
+    #       target: /app
+    #       action: sync
 
   # define the api service/container
   api: 
@@ -60,19 +60,19 @@ services:
       DB_URL: mongodb://db/anime
     
     # establish docker compose watch mode for the api service
-    develop:
-      # specify the files to watch for changes
-      watch:
-        # it'll watch for changes in package.json and package-lock.json and rebuild the container and image if there are any changes
-        - path: ./backend/package.json
-          action: rebuild
-        - path: ./backend/package-lock.json
-          action: rebuild
+    # develop:
+    #   # specify the files to watch for changes
+    #   watch:
+    #     # it'll watch for changes in package.json and package-lock.json and rebuild the container and image if there are any changes
+    #     - path: ./backend/package.json
+    #       action: rebuild
+    #     - path: ./backend/package-lock.json
+    #       action: rebuild
         
-        # it'll watch for changes in the backend directory and sync the changes with the container real time
-        - path: ./backend
-          target: /app
-          action: sync
+    #     # it'll watch for changes in the backend directory and sync the changes with the container real time
+    #     - path: ./backend
+    #       target: /app
+    #       action: sync
 
   # define the db service
   db:
